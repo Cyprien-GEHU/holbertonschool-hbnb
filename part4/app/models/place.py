@@ -1,22 +1,21 @@
 from app import db
 from .basemodel import BaseModel
-from app.models.user import User
-from sqlalchemy.orm import validates ,relationship
-from .relationship import place_amenity
+from sqlalchemy.orm import validates, relationship
+from .relation import place_amenity
 
 
 class Place(BaseModel):
     __tablename__ = 'places'
 
     title = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.String(), nullable=True)
+    description = db.Column(db.Text, nullable=True)
     price = db.Column(db.Float, nullable=False)
-    longitude = db.Column(db.Float, nullable=False)
     latitude = db.Column(db.Float, nullable=False)
-    owner_id = db.Column(db.String(36), db.ForeignKey('users.id'), nullable=False)
-    reviews = relationship('Review', backref='place', lazy = True)
-    amenities = relationship('Amenity', secondary=place_amenity, lazy = 'subquery',
-                             backref=db.backref('places', lazy=True))
+    longitude = db.Column(db.Float, nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    owner = relationship("User", back_populates="places")
+    reviews = relationship('Review', backref='places', lazy=True)
+    place_amenities = db.relationship('Amenity', secondary=place_amenity, lazy='subquery', backref=db.backref('places', lazy=True))
 
     def add_review(self, review):
         """Add a review to the place."""
@@ -26,36 +25,58 @@ class Place(BaseModel):
         """Add an amenity to the place."""
         self.amenities.append(amenity)
 
-    @validates('title', include_backrefs=False)
+    @validates('title')
     def validate_title(self, key, value):
         if not value:
-            raise ValueError("title is required")
-        if len(value) > 100:
-            raise ValueError("title must be less than 100 characters")
-        return value
-
-    @validates('price', include_backrefs=False)
-    def validate_price(self, key, value):
-        if value <= 0:
-            raise ValueError("price must be greater than 0")
-        return value
-
-    @validates('latitude', include_backrefs=False)
-    def validate_latitude(self, key, value):
-        if not (90.0 >= value >= -90.0):
-            raise ValueError("Latitude must be beewteen 90.0 and -90.0")
-        return value
-
-    @validates('longitude', include_backrefs=False)
-    def validate_longitude(self, key, value):
-        if not (180.0 >= value >= -180.0):
-            raise ValueError("longitude must be beewteen 180 and -180")
-        return value
-
-    @validates('owner_id')
-    def validate_owner_id(self, key, value):
+            raise TypeError("Title is required")
         if not isinstance(value, str):
-            raise TypeError("owner_id must be a string")
-        if len(value) != 36:
-            raise ValueError("the id have 36 letters")
+            raise TypeError("Title value is not valid")
+        if len(value) > 100:
+            raise ValueError("Title is too long")
         return value
+
+    @validates('description')
+    def validate_description(self, key, value):
+        if not isinstance(value, str):
+            raise TypeError("Description value is not valid")
+        return value
+
+    @validates('price')
+    def validate_price(self, key, value):
+        if not value:
+            raise TypeError("Price is required")
+        if not isinstance(value, (float, int)):
+            raise TypeError("Price value is not valid")
+        if value < 0:
+            raise ValueError("Price must be a positive number")
+        return value
+
+    @validates('latitude')
+    def validate_latitude(self, key, value):
+        if not value:
+            raise TypeError("Latitude is required")
+        if not isinstance(value, float):
+            raise TypeError("Latitude is not valid")
+        if value < -90 or value > 90:
+            raise ValueError("Latitude must be between -90 and 90")
+        return value
+
+    @validates('longitude')
+    def validate_longitude(self, key, value):
+        if not value:
+            raise TypeError("Longitude is required")
+        if not isinstance(value, float):
+            raise TypeError("Longitude is not valid")
+        if value < -180 or value > 180:
+            raise ValueError("Longitude must be between -180 and 180")
+        return value
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "description": self.description,
+            "price": self.price,
+            "latitude": self.latitude,
+            "longitude": self.longitude,
+        }

@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <img src="images/logo.png" alt="logo" class="logo">
+        <a href="login.html" id="login-button">Login</a>
+    </header>
     <main>
         <form id="login-form">
             <h2>Login</h2>
@@ -17,8 +21,12 @@
             <input type="password" id="password" name="password" required>
             
             <button type="submit">Login</button>
+            <div id="error-login" style="color: red; display: none;"></div>
         </form>
     </main>
+    <footer>
+        <p>&copy; all rights reserved</p>
+    </footer>
     <script src="scripts.js"></script>
 </body>
 </html>

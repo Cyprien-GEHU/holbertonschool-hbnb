@@ -8,21 +8,26 @@
 </head>
 <body>
     <header>
-        <nav>
-            <a href="login.html" id="login-link">Login</a>
-        </nav>
+        <img src="images/logo.png" alt="logo" class="logo">
+        <a href="login.html" id="login-button">Login</a>
     </header>
     <main>
         <section id="filter">
             <label for="price-filter">Max Price:</label>
             <select id="price-filter">
-                <!-- Options will be populated dynamically -->
+                <option value="all">all</option>
+                <option value="10">10 euros</option>
+                <option value="50">50 euros</option>
+                <option value="100">100 euros</option>
             </select>
         </section>
-        <section id="places-list">
+        <section class="place">
             <!-- List of places will be populated dynamically -->
         </section>
     </main>
+    <footer>
+        <p>&copy; all rights reserved</p>
+    </footer>
     <script src="scripts.js"></script>
 </body>
 </html>
