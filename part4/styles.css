@@ -40,7 +40,7 @@ main {
     padding: 2rem;
 }
  /* place and review */
-.review-card, .place {
+.review-card, #place {
     margin: 20px;
     padding: 10px;
     border: 1px solid #ddd;

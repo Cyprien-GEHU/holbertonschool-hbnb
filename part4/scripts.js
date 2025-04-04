@@ -1,9 +1,6 @@
-/* 
-  This is a SAMPLE FILE to get you started.
-  Please, follow the project instructions to complete the tasks.
-*/
-
+/* login part*/
 document.addEventListener('DOMContentLoaded', () => {
+  checkAuthentication();
   const loginForm = document.getElementById('login-form');
 
   if (loginForm) {
@@ -40,3 +37,50 @@ async function loginUser(email, password) {
   
 }
 
+/* check user part*/
+function checkAuthentication() {
+  const token = getCookie('token');
+  const loginLink = document.getElementById('login-button');
+
+  if (!token) {
+      loginLink.style.display = 'block';
+  } else {
+      loginLink.style.display = 'none';
+      // Fetch places data if the user is authenticated
+      fetchPlaces(token);
+  }
+}
+function getCookie(name) {
+  const cookie = document.cookie
+  .split("; ")
+  .find((row) => row.startsWith(name))
+  ?.split("=")[1];
+  return cookie
+}
+
+/* place part*/
+async function fetchPlaces(token) {
+  try {
+    const response = await fetch('http://127.0.0.1:5000/api/v1/places/');
+    const places = await response.json();
+    displayPlaces(places);
+  } catch (error) {
+    console.error('try again:' + error );
+  }
+}
+
+function displayPlaces(places) {
+  const placeList = document.getElementById('place');
+  placeList.innerHTML = '';
+
+  places.forEach(place => {
+    const placeCard = document.createElement('div');
+    placeCard.className = 'place-card';
+    placeCard.innerHTML = `
+      <h3>${place.title}</h3>
+      <p>Price ${place.price}</p>
+      <button class="details-button">More details</button}
+    `;
+    placeList.appendChild(placeCard);
+  });
+}
