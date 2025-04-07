@@ -89,7 +89,7 @@ class PlaceResource(Resource):
 
         return {'id': place.id,
                 'title': place.title,
-                'descripton': place.description,
+                'description': place.description,
                 'price': place.price,
                 'latitude': place.latitude,
                 'longitude': place.longitude,

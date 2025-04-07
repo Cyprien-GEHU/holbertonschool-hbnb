@@ -40,11 +40,16 @@ main {
     padding: 2rem;
 }
  /* place and review */
-.review-card, #place {
+.review-card, #places-list {
     margin: 20px;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 10px;
+    display: flex;
+}
+
+.place-card{
+    background-color: #ddd;
 }
 
 .place-details {
