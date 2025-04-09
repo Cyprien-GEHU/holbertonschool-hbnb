@@ -1,3 +1,4 @@
+/* global var */
 :root {
     --primary-color: #895aff;
     --border-color: #ddd;
@@ -38,6 +39,7 @@ header a {
     color: var(--color-white);
     text-decoration: none;
     margin-left: 1rem;
+    font-size: 20px;
 }
 
 /* main */
@@ -45,7 +47,7 @@ main {
     padding: 2rem;
 }
  /* place and review */
-.review-card, #places-list {
+#review, #places-list {
     margin: 20px;
     padding: 10px;
     border: 1px solid var(--border-color);
@@ -89,8 +91,16 @@ main {
     font-size: 30px;
 }
 
-.place-details {
+/* place details and place review part */
+#place-details {
     color: var(--color-black);
+    background-color: var(--box-color);
+    border: var(--border-button-color);
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 75px;
 }
 
 .details-button {
@@ -109,11 +119,46 @@ main {
     color: var(--color-white);
     border: var(--border-button-review);
     border-radius: 15px;
+    padding: 7px;
+}
+
+/* add_review part */
+#review-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.h2 {
+    font-size: 30px;
+    text-align: center;
+}
+
+.label {
+    font-size: 25px;
+    margin-bottom: 8px ;
+}
+
+#review-text {
+    background-color: var(--box-color);
+    height: 150px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: solid 0.5mm var(--primary-color);
+    border-radius: 15px;
+}
+
+#rating {
+    width: 250px;
+    font-size: 30px;
+    margin-bottom: 30px;
+    color: var(--primary-color);
 }
 
 /* footer */
 footer {
     background-color: var(--primary-color);
+    color: var(--color-white);
     text-align: center;
     padding: 10px;
 }

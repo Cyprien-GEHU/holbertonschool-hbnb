@@ -46,10 +46,10 @@ async function fetchPlaceDetails(token, placeId) {
 /* the function display all details of the place */
 function displayPlaceDetails(dataPlace) {
   document.getElementById('place-details').innerHTML = `
-    <h1>${dataPlace.title}</h1>
-    <p>Description: ${dataPlace.description}</p>
-    <p>Price: ${dataPlace.price}</p>
-    <p>Amenities: ${dataPlace.amenities.map(review => review.name).join(', ')}</p>
+    <h1 class="title-card">${dataPlace.title}</h1>
+    <p class="space-card">Description: ${dataPlace.description}</p>
+    <p class="space-card">Price: ${dataPlace.price} euros per night</p>
+    <p class="space-card">Amenities: ${dataPlace.amenities.map(review => review.name).join(', ')}</p>
   `;
   
   const reviewPlace = document.getElementById('review');
@@ -59,8 +59,8 @@ function displayPlaceDetails(dataPlace) {
     const div = document.createElement('div')
     div.classList.add('review-card')
     div.innerHTML =`
-    <p>${rev.text}</p>
-    <p>${rev.rating}</p>
+    <p class="space-card">${rev.text}</p>
+    <p class="space-card">${rev.rating}</p>
   `;
   reviewPlace.appendChild(div)
 });

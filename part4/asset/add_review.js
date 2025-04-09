@@ -29,6 +29,8 @@ function checkAuthentication() {
   if (!token) {
     loginLink.style.display = 'block';
     logoutLink.style.display = 'none';
+    window.location.href = 'index.html';
+
   } else {
     loginLink.style.display = 'none';
     logoutLink.style.display = 'block';
