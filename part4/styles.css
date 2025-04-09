@@ -46,24 +46,53 @@ main {
     border: 1px solid #ddd;
     border-radius: 10px;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .place-card{
     background-color: #ddd;
+    padding: 20px 24px;
+    width: 300px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.space-card{
+    padding-bottom: 5px;
+    font-size: 25px;
+}
+
+.title-card {
+    padding-bottom: 5px;
+    font-size: 30px;
 }
 
 .place-details {
- color: #333;
-}
-
-.place-info {
-    color: #333
-}
-
-.details-button {
     color: #333;
 }
 
+.details-button {
+    color: white;
+    background: #895aff;
+    padding: 5px;
+    font-size: 25px;
+    border: solid #581af3;
+    border-radius: 15px;
+}
+
+.button-review {
+    width: 100%;
+    font-size: 20px;
+    background: #895aff;
+    color: white;
+    border: solid #581af3;
+    border-radius: 15px;
+}
 
 /* footer */
 footer {
