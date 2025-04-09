@@ -16,6 +16,10 @@
     font-family: Arial, sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--color-white);
     color: var(--color-black);
@@ -45,6 +49,27 @@ header a {
 /* main */
 main {
     padding: 2rem;
+}
+/* login part */
+#login-form {
+ display: flex;
+ flex-direction: column;
+}
+
+#email {
+    width: 300px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    border: solid 0.3mm var(--primary-color);
+    padding: 5px;
+}
+
+#password {
+    width: 300px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    border: solid 0.3mm var(--primary-color);
+    padding: 5px;
 }
  /* place and review */
 #review, #places-list {
@@ -128,12 +153,13 @@ main {
     flex-direction: column;
 }
 
-.h2 {
+h2 {
     font-size: 30px;
     text-align: center;
+    margin-bottom: 10px;
 }
 
-.label {
+label {
     font-size: 25px;
     margin-bottom: 8px ;
 }
