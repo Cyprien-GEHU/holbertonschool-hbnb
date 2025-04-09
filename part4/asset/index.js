@@ -20,11 +20,14 @@ document.getElementById('price-filter').addEventListener('change', () => {
 function checkAuthentication() {
     const token = getCookie('token');
     const loginLink = document.getElementById('login-button')
+    const logoutLink = document.getElementById('logout-button')
   
     if (!token) {
         loginLink.style.display = 'block';
+        logoutLink.style.display = 'none';
     } else {
         loginLink.style.display = 'none';
+        logoutLink.style.display = 'block';
         // Fetch places data if the user is authenticated
         fetchPlaces(token);
     }

@@ -22,15 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* Check if we have token and */
 function checkAuthentication() {
-    const token = getCookie('token');
-    const loginLink = document.getElementById('login-button')
+  const token = getCookie('token');
+  const loginLink = document.getElementById('login-button')
+  const logoutLink = document.getElementById('logout-button')
   
-    if (!token) {
-      loginLink.style.display = 'block';
-    } else {
-      loginLink.style.display = 'none';
-    }
+  if (!token) {
+    loginLink.style.display = 'block';
+    logoutLink.style.display = 'none';
+  } else {
+    loginLink.style.display = 'none';
+    logoutLink.style.display = 'block';
   }
+}
   
 /* function to get the token */
 function getCookie(name) {

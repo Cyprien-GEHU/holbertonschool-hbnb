@@ -1,25 +1,19 @@
-document.addEventListener('DOMContentLoaded', () => {
-  checkAuthentication();
-  const token = getCookie('token');
-  const placeId = getPlaceIdFromURL();
-  try {
-      if (token && placeId)  {
-       fetchPlaceDetails(token, placeId);
-      }
-    }catch (error) {
-      console.error(error)
-    }
-})
+document.addEventListener('DOMContentLoaded',checkAuthentication());
 
 /* Check if we have token and */
 function checkAuthentication() {
   const token = getCookie('token');
+  const placeId = getPlaceIdFromURL();
   const loginLink = document.getElementById('login-button')
+  const logoutLink = document.getElementById('logout-button')
 
   if (!token) {
     loginLink.style.display = 'block';
+    logoutLink.style.display = 'none';
   } else {
     loginLink.style.display = 'none';
+    logoutLink.style.display = 'block';
+    fetchPlaceDetails(token, placeId);
   }
 }
 
