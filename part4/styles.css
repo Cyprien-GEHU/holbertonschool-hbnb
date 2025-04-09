@@ -1,7 +1,12 @@
-/* 
-  This is a SAMPLE File to get you started. Follow the instructions on the project to complete the tasks. 
-  You'll probably need to override some of theese styles.
-*/
+:root {
+    --primary-color: #895aff;
+    --border-color: #ddd;
+    --border-button-color: #581af3;
+    --box-color: #ddd9e9;
+    --color-white: #fff;
+    --color-black: #000;
+    --border-button-review: solid 0.5mm var(--border-button-color);
+}
 
 * {
     box-sizing: border-box;
@@ -11,8 +16,8 @@
 }
 
 body {
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--color-white);
+    color: var(--color-black);
 }
 
 /* header */
@@ -20,8 +25,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #895aff;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--color-white);
     padding: 1.2rem;
 }
 
@@ -30,7 +35,7 @@ header {
 }
 
 header a {
-    color: #fff;
+    color: var(--color-white);
     text-decoration: none;
     margin-left: 1rem;
 }
@@ -43,15 +48,27 @@ main {
 .review-card, #places-list {
     margin: 20px;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
+/* price filter part */
+#filter {
+    text-align: center;
+    font-size: 25px;
+}
+
+#price-filter{
+    font-size: 20px;
+    padding: 2px;
+}
+
+/* part of place in index */
 .place-card{
-    background-color: #ddd;
+    background-color: var(--box-color);
     padding: 20px 24px;
     width: 300px;
     margin-bottom: 20px;
@@ -63,40 +80,40 @@ main {
 }
 
 .space-card{
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     font-size: 25px;
 }
 
 .title-card {
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     font-size: 30px;
 }
 
 .place-details {
-    color: #333;
+    color: var(--color-black);
 }
 
 .details-button {
-    color: white;
-    background: #895aff;
+    color: var(--color-white);
+    background: var(--primary-color);
     padding: 5px;
     font-size: 25px;
-    border: solid #581af3;
+    border: var(--border-button-review);
     border-radius: 15px;
 }
 
 .button-review {
     width: 100%;
     font-size: 20px;
-    background: #895aff;
-    color: white;
-    border: solid #581af3;
+    background: var(--primary-color);
+    color: var(--color-white);
+    border: var(--border-button-review);
     border-radius: 15px;
 }
 
 /* footer */
 footer {
-    background-color: #895aff;
+    background-color: var(--primary-color);
     text-align: center;
     padding: 10px;
 }
