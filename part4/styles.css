@@ -72,7 +72,7 @@ main {
     padding: 5px;
 }
  /* place and review */
-#review, #places-list {
+#places-list {
     margin: 20px;
     padding: 10px;
     border: 1px solid var(--border-color);
@@ -116,6 +116,15 @@ main {
     font-size: 30px;
 }
 
+.details-button {
+    color: var(--color-white);
+    background: var(--primary-color);
+    padding: 5px;
+    font-size: 25px;
+    border: var(--border-button-review);
+    border-radius: 15px;
+}
+
 /* place details and place review part */
 #place-details {
     color: var(--color-black);
@@ -128,12 +137,22 @@ main {
     border-radius: 75px;
 }
 
-.details-button {
-    color: var(--color-white);
-    background: var(--primary-color);
-    padding: 5px;
-    font-size: 25px;
-    border: var(--border-button-review);
+#review {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.review-card{
+    background-color: var(--box-color);
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px 15px;
     border-radius: 15px;
 }
 
@@ -169,7 +188,7 @@ label {
     height: 150px;
     font-size: 18px;
     margin-bottom: 10px;
-    padding: 5px;
+    padding: 6px;
     border: solid 0.5mm var(--primary-color);
     border-radius: 15px;
 }

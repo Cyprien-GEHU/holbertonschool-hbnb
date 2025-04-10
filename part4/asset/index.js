@@ -31,6 +31,14 @@ function checkAuthentication() {
         // Fetch places data if the user is authenticated
         fetchPlaces(token);
     }
+
+    if (logoutLink) {
+      logoutLink.addEventListener("click", function (event) {
+        event.preventDefault(); 
+        deleteCookie();
+        window.location.href = "login.html"; 
+      });
+    }
 }
 
 /* function to get the token */
@@ -40,6 +48,10 @@ function getCookie(name) {
   .find((row) => row.startsWith(name))
   ?.split("=")[1];
   return cookie
+}
+
+function deleteCookie(){
+  document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
 /*fetch part */

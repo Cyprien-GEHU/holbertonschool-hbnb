@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     reviewForm.addEventListener('submit', async (event) => {
       event.preventDefault();
               
-      const text = document.getElementById('review').value;
+      const text = document.getElementById('review-text').value;
       const rating = document.getElementById('rating').value;
   
       try {
@@ -35,6 +35,14 @@ function checkAuthentication() {
     loginLink.style.display = 'none';
     logoutLink.style.display = 'block';
   }
+
+  if (logoutLink) {
+    logoutLink.addEventListener("click", function (event) {
+      event.preventDefault(); 
+      deleteCookie();
+      window.location.href = "login.html"; 
+    });
+  }
 }
   
 /* function to get the token */
@@ -44,6 +52,10 @@ function getCookie(name) {
   .find((row) => row.startsWith(name))
   ?.split("=")[1];
   return cookie
+}
+
+function deleteCookie(){
+  document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
   
 /* Get the place id with the url*/
