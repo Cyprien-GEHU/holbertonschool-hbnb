@@ -52,8 +52,8 @@ main {
 }
 /* login part */
 #login-form {
- display: flex;
- flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 #email {
@@ -114,6 +114,7 @@ main {
 .title-card {
     padding-bottom: 10px;
     font-size: 30px;
+    text-align: center;
 }
 
 .details-button {
@@ -133,7 +134,6 @@ main {
     padding: 20px 25px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     border-radius: 75px;
 }
 
@@ -206,4 +206,21 @@ footer {
     color: var(--color-white);
     text-align: center;
     padding: 10px;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
 }
+
+/* animation */
+a:hover {
+    text-decoration: underline;
+    font-size: 21px;
+    transition: 200ms;
+}
+
+.button-review:hover, .details-button:hover {
+    box-shadow: 0px 0px 5px var(--border-button-color);
+    transition: 200ms;
+    background: linear-gradient(var(--primary-color), var(--border-button-color));
+}
+
