@@ -67,9 +67,14 @@ function displayPlaceDetails(dataPlace) {
   const reviewPlace = document.getElementById('review');
   reviewPlace.innerHTML = "<h2> Reviews</h2>"
   
-  dataPlace.reviews.forEach(rev => {
-    user(rev)
-});
+  if (dataPlace.reviews && dataPlace.reviews.length > 0) {
+    dataPlace.reviews.forEach(rev => {
+      user(rev)
+  });
+  } else {
+    reviewPlace.innerHTML += '<p id="noReview">On a pas de review pour le moment</p>'
+  }
+
   document.getElementById('add-review').innerHTML = `
     <a href="add_review.html?id=${dataPlace.id}">
     <button type="submit" class="button-review">Add Review</button>
@@ -84,10 +89,9 @@ async function user(rev) {
   const div = document.createElement('div')
     div.classList.add('review-card')
     div.innerHTML =`
-    <p class="space-card">${user.first_name} ${user.last_name}:</p>
+    <p class="user-review">${user.first_name} ${user.last_name}:</p>
     <p class="space-card">${rev.text}</p>
     <p class="space-card">Rating: ${rev.rating}&starf;</p>
   `;
   reviewPlace.appendChild(div)
-  return div;
 }

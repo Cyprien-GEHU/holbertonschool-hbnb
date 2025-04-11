@@ -6,10 +6,10 @@ document.getElementById('price-filter').addEventListener('change', () => {
     const places = document.querySelectorAll('.place-card')
   
     places.forEach(card => {  
-      const value = parseInt(card.querySelector('p').textContent.replace('Price: ', ''),10);
+      const value = parseInt(card.querySelector('p').textContent.replace('Price per night: ', ''),10);
   
       if (selectPrice === 'all' || value <= parseInt(selectPrice, 10)) {
-        card.style.display = 'block';
+        card.style.display = 'flex';
       } else {
         card.style.display = 'none';
     }
@@ -75,7 +75,7 @@ function displayPlaces(places) {
       placeCard.className = 'place-card';
       placeCard.innerHTML = `
         <h3 class="title-card">${place.title}</h3>
-        <p class="space-card">Price: ${place.price}</p>
+        <p class="space-card">Price per night: ${place.price}</p>
         <a href="place.html?id=${place.id}">
         <button class="details-button">Views details</button>
         </a>
